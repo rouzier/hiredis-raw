@@ -54,6 +54,7 @@ SV* redisReplyToSV(redisReply *reply){
 
             case REDIS_REPLY_ARRAY:
                 array = newAV();
+                av_extend(array,reply->elements);
                 for(i = 0; i < reply->elements; i++){
                     elements = reply->element;
                     result = redisReplyToSV(elements[i]);
